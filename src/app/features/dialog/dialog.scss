@@ -1,0 +1,77 @@
+    .side-panel {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 360px;
+        background: white;
+        border-left: 1px solid #e2e8f0;
+        padding: 1.5rem;
+        box-shadow: -4px 0 24px rgba(0, 0, 0, 0.08);
+    }
+
+    // .overlay {
+    //     position: fixed;
+    //     inset: 0;
+    //     background: rgba(0, 0, 0, 0.5);
+    //     display: flex;
+    //     align-items: center;
+    //     justify-content: center;
+    //     z-index: 50;
+    // }
+
+    .panel {
+        background: white;
+        border-radius: 12px;
+        padding: 1.5rem;
+        width: min(480px, calc(100vw - 2rem));
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    }
+
+    .panel h2 {
+        margin: 0 0 0.5rem;
+        font-size: 1.125rem;
+    }
+
+    .panel p {
+        margin: 0 0 1.5rem;
+        color: #555;
+        font-size: 0.9375rem;
+    }
+
+    .actions {
+        display: flex;
+        gap: 0.75rem;
+        justify-content: flex-end;
+    }
+
+    /* Animate open/close with data-state */
+    [apDialogOverlay][data-state="open"] {
+        animation: fadeIn 200ms ease;
+    }
+
+    [apDialogContent][data-state="open"] {
+        animation: slideUp 200ms ease;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0
+        }
+
+        to {
+            opacity: 1
+        }
+    }
+
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(8px)
+        }
+
+        to {
+            opacity: 1;
+            transform: none
+        }
+    }

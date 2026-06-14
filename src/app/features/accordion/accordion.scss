@@ -1,0 +1,81 @@
+    .accordion {
+        width: 100%;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .accordion-item {
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .accordion-item:last-child {
+        border-bottom: none;
+    }
+
+    /* Trigger */
+    .trigger {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 1.25rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 0.9375rem;
+        font-weight: 500;
+        text-align: left;
+        color: #1a202c;
+    }
+
+    .trigger:hover {
+        background: #f7fafc;
+    }
+
+    .trigger:focus-visible {
+        outline: 2px solid #3b82f6;
+        outline-offset: -2px;
+    }
+
+    .trigger[data-disabled] {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    /* Chevron icon — pure CSS, rotates on open */
+    .chevron {
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+        transition: transform 200ms ease;
+    }
+
+    .trigger[data-state="open"] .chevron {
+        transform: rotate(180deg);
+    }
+
+    /* Content panel */
+    .content {
+        padding: 0 1.25rem 1rem;
+        color: #4a5568;
+        font-size: 0.9375rem;
+        line-height: 1.6;
+    }
+
+    /* Animation using data-state */
+    [apAccordionContent][data-state="open"] {
+        animation: slideDown 150ms ease-out;
+    }
+
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-4px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }

@@ -1,0 +1,163 @@
+<div class="space-y-12">
+  <div class="space-y-4">
+    <h1 class="text-3xl font-bold text-white tracking-tight">Select</h1>
+    <p class="text-slate-400 text-lg">Displays a list of options for the user to pick from, triggered by a button.</p>
+    
+    <div class="p-4 bg-primary/10 border border-primary/20 rounded-lg text-primary text-sm leading-relaxed">
+      <strong>Headless Utility:</strong> The <code>@snatuva/primitives</code> library is purely a headless utility. It <strong>does not manage any CSS</strong>. Instead, it wires up the correct ARIA attributes, handles keyboard navigation, and provides <code>data-*</code> attributes for you to hook into. You have complete control over the visual presentation using your preferred CSS solution.
+    </div>
+  </div>
+
+  <div class="space-y-4">
+    <h2 class="text-xl font-semibold text-white tracking-tight border-b border-border pb-2">1. Tailwind CSS Variant</h2>
+    <p class="text-sm text-slate-400">A clean, modern variant styled exclusively with Tailwind CSS utility classes.</p>
+    <div class="p-6 border border-border rounded-lg bg-surface/50">
+      <div class="max-w-xs mx-auto">
+        <label class="block text-sm font-medium text-slate-300 mb-1.5" id="select-label">Choose a framework</label>
+        
+        <div apSelect 
+             (valueChange)="onValueChange($event)" 
+             [defaultValue]="'angular'"
+             #select="apSelect"
+             class="relative w-full">
+             
+          <button apSelectTrigger
+                  aria-labelledby="select-label"
+                  class="flex items-center justify-between w-full px-3 py-2 text-sm bg-surface border border-border rounded-md shadow-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed data-[state=open]:ring-2 data-[state=open]:ring-primary data-[state=open]:border-primary transition-colors">
+            <span class="truncate">
+              {{ getDisplayValue(selectedFramework()) }}
+            </span>
+            <svg class="w-4 h-4 text-slate-400 pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+            </svg>
+          </button>
+      
+          <ng-template apSelectContent>
+            <div role="listbox" 
+                 [id]="select.listboxId()"
+                 aria-labelledby="select-label"
+                 class="z-50 w-full min-w-[8rem] overflow-hidden bg-surface border border-border rounded-md shadow-xl outline-none mt-1 p-1">
+              
+              @for (framework of frameworks; track framework.id) {
+                <div apSelectOption
+                     [value]="framework.id"
+                     [disabled]="framework.disabled || false"
+                     class="relative flex items-center w-full px-8 py-2 text-sm rounded-sm cursor-default select-none outline-none text-slate-300 data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed data-[active]:bg-slate-800 data-[active]:text-white data-[state=selected]:font-medium transition-colors">
+                  
+                  <span class="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+                    @if (selectedFramework() === framework.id) {
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 text-primary">
+                        <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
+                      </svg>
+                    }
+                  </span>
+                  
+                  <span>{{ framework.name }}</span>
+                </div>
+              }
+              
+            </div>
+          </ng-template>
+        </div>
+        
+        <p class="mt-4 text-sm text-slate-400 text-center">
+          Selected framework: <span class="font-semibold text-white">{{ selectedFramework() }}</span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="space-y-4">
+    <h2 class="text-xl font-semibold text-white tracking-tight border-b border-border pb-2">2. Minimal Neumorphic Variant</h2>
+    <p class="text-sm text-slate-400">A completely different aesthetic using custom CSS inside the component. The underlying primitive logic remains exactly the same.</p>
+    <div class="p-8 border border-border rounded-lg bg-slate-900 flex justify-center">
+      
+      <!-- Custom CSS block just for this demo -->
+      <style>
+        .neo-select-trigger {
+          all: unset;
+          box-sizing: border-box;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 250px;
+          padding: 12px 20px;
+          border-radius: 99px;
+          background: #1e293b;
+          color: #f8fafc;
+          font-weight: 600;
+          font-size: 14px;
+          box-shadow: 4px 4px 10px rgba(0,0,0,0.3), -4px -4px 10px rgba(255,255,255,0.05);
+          cursor: pointer;
+          transition: all 0.2s ease;
+        }
+        .neo-select-trigger:focus, .neo-select-trigger[data-state="open"] {
+          box-shadow: inset 2px 2px 5px rgba(0,0,0,0.3), inset -2px -2px 5px rgba(255,255,255,0.05);
+          color: #38bdf8;
+        }
+        
+        .neo-select-content {
+          margin-top: 12px;
+          width: 250px;
+          background: #1e293b;
+          border-radius: 20px;
+          padding: 8px;
+          box-shadow: 4px 4px 15px rgba(0,0,0,0.4), -4px -4px 15px rgba(255,255,255,0.02);
+        }
+        
+        .neo-select-option {
+          padding: 10px 16px;
+          border-radius: 12px;
+          color: #94a3b8;
+          cursor: pointer;
+          font-weight: 500;
+          transition: background 0.1s, color 0.1s;
+        }
+        .neo-select-option[data-active] {
+          background: rgba(255,255,255,0.05);
+          color: #e2e8f0;
+        }
+        .neo-select-option[data-state="selected"] {
+          color: #38bdf8;
+          font-weight: 700;
+        }
+      </style>
+
+      <div>
+        <label class="block text-xs uppercase tracking-wider font-bold text-slate-500 mb-3 ml-2" id="theme-label">Theme Preference</label>
+        
+        <div apSelect 
+             (valueChange)="onThemeChange($event)" 
+             [defaultValue]="'system'"
+             #themeSelect="apSelect"
+             class="relative">
+             
+          <button apSelectTrigger
+                  aria-labelledby="theme-label"
+                  class="neo-select-trigger">
+            <span>{{ getThemeDisplayValue(selectedTheme()) }}</span>
+            <span>▼</span>
+          </button>
+      
+          <ng-template apSelectContent>
+            <div role="listbox" 
+                 [id]="themeSelect.listboxId()"
+                 aria-labelledby="theme-label"
+                 class="neo-select-content">
+              
+              @for (theme of themes; track theme.id) {
+                <div apSelectOption
+                     [value]="theme.id"
+                     class="neo-select-option">
+                  {{ theme.name }}
+                </div>
+              }
+              
+            </div>
+          </ng-template>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
