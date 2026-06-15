@@ -1,0 +1,41 @@
+<div class="space-y-6">
+  <div>
+    <h1 class="text-3xl font-serif font-semibold text-ink tracking-tight">Tabs</h1>
+    <p class="text-ink-muted mt-2 text-lg">A set of layered sections of content, known as tab panels, that display one panel at a time.</p>
+  </div>
+
+  <app-example-viewer
+    title="Basic Tabs"
+    description="Use arrow keys, Home and End to navigate between tabs."
+    [code]="tabsCode">
+
+    <div apTabs class="w-full max-w-md mx-auto">
+        <div apTabList class="flex border-b border-border" aria-orientation="horizontal">
+            <button apTabTrigger tabId="account" class="px-4 py-2 text-sm font-medium text-ink-muted border-b-2 border-transparent hover:text-ink focus:outline-none focus:ring-2 focus:ring-primary aria-selected:text-ink aria-selected:border-primary">
+                Account
+            </button>
+            <button apTabTrigger tabId="password" class="px-4 py-2 text-sm font-medium text-ink-muted border-b-2 border-transparent hover:text-ink focus:outline-none focus:ring-2 focus:ring-primary aria-selected:text-ink aria-selected:border-primary">
+                Password
+            </button>
+            <button apTabTrigger tabId="team" class="px-4 py-2 text-sm font-medium text-ink-muted border-b-2 border-transparent hover:text-ink focus:outline-none focus:ring-2 focus:ring-primary aria-selected:text-ink aria-selected:border-primary">
+                Team
+            </button>
+        </div>
+
+        <div apTabPanel [value]="'account'" class="px-4 py-3 text-sm text-ink-muted">
+            Manage your account settings and set e-mail preferences.
+        </div>
+        <div apTabPanel [value]="'password'" class="px-4 py-3 text-sm text-ink-muted">
+            Change your password here. After saving, you'll be logged out.
+        </div>
+        <div apTabPanel [value]="'team'" class="px-4 py-3 text-sm text-ink-muted">
+            Invite and manage your team members and their permissions.
+        </div>
+    </div>
+
+  </app-example-viewer>
+
+  <app-api-table title="API Reference (apTabList)" [properties]="apiProperties"></app-api-table>
+  <app-api-table title="API Reference (apTabTrigger)" [properties]="tabTriggerProperties"></app-api-table>
+  <app-api-table title="API Reference (apTabPanel)" [properties]="tabPanelProperties"></app-api-table>
+</div>

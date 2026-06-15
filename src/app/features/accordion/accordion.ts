@@ -27,7 +27,7 @@ export class AccordionComponent {
     accordionCode = `
 <div apAccordion type="single" [collapsible]="true" class="w-full max-w-md mx-auto rounded-lg overflow-hidden border border-border">
     <div apAccordionItem itemId="item-1" class="border-b border-border last:border-b-0">
-        <button apAccordionTrigger class="w-full flex justify-between items-center px-4 py-3 bg-surface hover:bg-surface/80 text-white font-medium focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset data-[state=open]:bg-surface/80">
+        <button apAccordionTrigger class="w-full flex justify-between items-center px-4 py-3 bg-surface hover:bg-surface-hover text-ink font-medium focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset data-[state=open]:bg-surface-hover">
             What are headless UI primitives?
             <svg class="w-4 h-4 transition-transform duration-200 data-[state=open]:rotate-180" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
