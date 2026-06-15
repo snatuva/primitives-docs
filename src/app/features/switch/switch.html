@@ -1,0 +1,26 @@
+<div class="space-y-6">
+  <div>
+    <h1 class="text-3xl font-serif font-semibold text-ink tracking-tight">Switch</h1>
+    <p class="text-ink-muted mt-2 text-lg">A control that toggles between checked and not checked, built on a native checkbox.</p>
+  </div>
+
+  <app-example-viewer
+    title="Basic Switch"
+    description="Click the switch or focus it and press Space to toggle."
+    [code]="switchCode">
+
+    <label class="inline-flex items-center gap-3 cursor-pointer select-none">
+        <input type="checkbox" apSwitch [(checked)]="airplaneMode" class="sr-only" />
+        <span class="w-10 h-6 rounded-full transition-colors relative"
+              [class.bg-primary]="airplaneMode()"
+              [class.bg-border]="!airplaneMode()">
+            <span class="absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow transition-transform"
+                  [class.translate-x-4]="airplaneMode()"></span>
+        </span>
+        <span class="text-sm text-ink font-medium">Airplane Mode</span>
+    </label>
+
+  </app-example-viewer>
+
+  <app-api-table title="API Reference (apSwitch)" [properties]="apiProperties"></app-api-table>
+</div>

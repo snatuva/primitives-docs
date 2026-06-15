@@ -1,0 +1,48 @@
+<div class="space-y-6">
+  <div>
+    <h1 class="text-3xl font-serif font-semibold text-ink tracking-tight">Checkbox</h1>
+    <p class="text-ink-muted mt-2 text-lg">A control that allows the user to toggle between checked, unchecked, and indeterminate states.</p>
+  </div>
+
+  <app-example-viewer
+    title="Basic Checkbox"
+    description="A native checkbox enhanced with apCheckbox."
+    [code]="checkboxCode">
+
+    <label class="inline-flex items-center gap-2 cursor-pointer select-none">
+        <input type="checkbox" apCheckbox [(checked)]="agreed" class="w-4 h-4 rounded accent-primary" />
+        <span class="text-sm text-ink">I agree to the terms and conditions</span>
+    </label>
+
+  </app-example-viewer>
+
+  <app-example-viewer
+    title="Indeterminate (Select All)"
+    description="The 'Select all' checkbox shows an indeterminate state when only some items are checked."
+    [code]="indeterminateCode">
+
+    <div class="space-y-2">
+        <label class="inline-flex items-center gap-2 cursor-pointer select-none font-medium">
+            <input type="checkbox" apCheckbox
+                   [checked]="allChecked()"
+                   [indeterminate]="someChecked()"
+                   (checkedChange)="toggleAll($event)"
+                   class="w-4 h-4 rounded accent-primary" />
+            <span class="text-sm text-ink">Select all</span>
+        </label>
+
+        @for (item of items(); track item.label; let i = $index) {
+          <label class="flex items-center gap-2 cursor-pointer select-none ml-6">
+              <input type="checkbox" apCheckbox
+                     [checked]="item.checked"
+                     (checkedChange)="toggleItem(i, $event)"
+                     class="w-4 h-4 rounded accent-primary" />
+              <span class="text-sm text-ink-muted">{{ item.label }}</span>
+          </label>
+        }
+    </div>
+
+  </app-example-viewer>
+
+  <app-api-table title="API Reference (apCheckbox)" [properties]="apiProperties"></app-api-table>
+</div>
