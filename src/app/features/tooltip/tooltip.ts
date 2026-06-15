@@ -20,11 +20,11 @@ import { ApiTableComponent, ApiProperty } from '../../core/components/api-table/
 export class Tooltip {
   tooltipCode = `
 <div apTooltip>
-    <button apTooltipTrigger class="px-4 py-2 bg-primary text-white rounded hover:bg-blue-600 transition-colors">
+    <button apTooltipTrigger class="px-4 py-2 bg-primary text-white rounded hover:bg-primary-hover transition-colors">
         Hover me
     </button>
     <ng-template apTooltipContent [tooltipId]="'my-tooltip-id'">
-        <div class="px-3 py-2 bg-slate-800 text-white text-sm rounded shadow-lg border border-border">
+        <div class="px-3 py-2 bg-ink text-white text-sm rounded shadow-lg">
             This is a helpful tooltip!
         </div>
     </ng-template>
