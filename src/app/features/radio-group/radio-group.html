@@ -1,0 +1,31 @@
+<div class="space-y-6">
+  <div>
+    <h1 class="text-3xl font-serif font-semibold text-ink tracking-tight">Radio Group</h1>
+    <p class="text-ink-muted mt-2 text-lg">A set of checkable buttons — known as radio buttons — where no more than one can be checked at a time.</p>
+  </div>
+
+  <app-example-viewer
+    title="Basic Radio Group"
+    description="Use arrow keys to move between items once one is focused."
+    [code]="radioGroupCode">
+
+    <div apRadioGroup [(value)]="plan" class="space-y-2">
+        <label class="flex items-center gap-2 cursor-pointer select-none">
+            <input type="radio" apRadioGroupItem value="free" class="w-4 h-4 accent-primary" />
+            <span class="text-sm text-ink">Free</span>
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer select-none">
+            <input type="radio" apRadioGroupItem value="pro" class="w-4 h-4 accent-primary" />
+            <span class="text-sm text-ink">Pro</span>
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer select-none">
+            <input type="radio" apRadioGroupItem value="team" class="w-4 h-4 accent-primary" />
+            <span class="text-sm text-ink">Team</span>
+        </label>
+    </div>
+
+  </app-example-viewer>
+
+  <app-api-table title="API Reference (apRadioGroup)" [properties]="rootApiProperties"></app-api-table>
+  <app-api-table title="API Reference (apRadioGroupItem)" [properties]="itemApiProperties"></app-api-table>
+</div>

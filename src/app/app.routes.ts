@@ -9,6 +9,9 @@ export const routes: Routes = [
     { path: 'accordion', loadComponent: () => import('./features/accordion/accordion').then(m => m.AccordionComponent) },
     { path: 'dialog', loadComponent: () => import('./features/dialog/dialog').then(m => m.DialogComponent) },
     { path: 'select', loadComponent: () => import('./features/select/select-demo/select-demo.component').then(m => m.SelectDemoComponent) },
+    { path: 'switch', loadComponent: () => import('./features/switch/switch').then(m => m.SwitchComponent) },
+    { path: 'checkbox', loadComponent: () => import('./features/checkbox/checkbox').then(m => m.CheckboxComponent) },
+    { path: 'radio-group', loadComponent: () => import('./features/radio-group/radio-group').then(m => m.RadioGroupComponent) },
     { path: '', redirectTo: '/introduction', pathMatch: 'full' },
     { path: '**', redirectTo: '/introduction' }
 ];
